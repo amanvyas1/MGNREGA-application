@@ -6,18 +6,20 @@ public class ProjectEmpDTO {
 	private int empId;
 	private String empName;
 	private int wages;
+	private int days;
 	
 	public ProjectEmpDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProjectEmpDTO(int projectId, String projectName, int empId, String empName, int wages) {
+	public ProjectEmpDTO(int projectId, String projectName, int empId, String empName, int wages,int days) {
 		super();
 		this.projectId = projectId;
 		this.projectName = projectName;
 		this.empId = empId;
 		this.empName = empName;
 		this.wages = wages;
+		this.days  = days;
 	}
 
 	public int getProjectId() {
@@ -60,10 +62,20 @@ public class ProjectEmpDTO {
 		this.wages = wages;
 	}
 
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+
 	@Override
 	public String toString() {
 		return "ProjectEmpDTO [projectId=" + projectId + ", projectName=" + projectName + ", empId=" + empId
-				+ ", empName=" + empName + ", wages=" + wages + "]";
+				+ ", empName=" + empName + ", wages=" + wages + ", days=" + days + "]";
 	}
+
+	
 	
 }
