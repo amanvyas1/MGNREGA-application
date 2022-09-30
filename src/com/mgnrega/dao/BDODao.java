@@ -2,6 +2,7 @@ package com.mgnrega.dao;
 
 import java.util.List;
 
+import com.mgnrega.bean.GPM;
 import com.mgnrega.bean.Project;
 import com.mgnrega.bean.ProjectEmpDTO;
 import com.mgnrega.exceptions.GPMException;
@@ -15,7 +16,7 @@ public interface BDODao {
 	
 	public String createGPM(String name,String phone,String password);
 	
-	public List<GPMDao> viewAllGPM() throws GPMException;
+	public List<GPM> viewAllGPM() throws GPMException;
 	
 	public String allocateProjectGpm(int gpmId,int projectId) throws ProjectException, GPMException;
 	
