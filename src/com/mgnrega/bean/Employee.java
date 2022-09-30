@@ -2,24 +2,21 @@ package com.mgnrega.bean;
 
 public class Employee {
 	private int empId;
-	private String eName;
-	private int wage;
+	private String empName;
 	private int days;
 	
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String eName, int wage, int days) {
+	public Employee(String empName) {
 		super();
-		this.eName = eName;
-		this.wage = wage;
-		this.days = days;
+		this.empName = empName;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", eName=" + eName + ", wage=" + wage + ", days=" + days + "]";
+		return "Employee [empId=" + empId + ", eName=" + empName + ", days=" + days + "]";
 	}
 
 	public int getEmpId() {
@@ -31,20 +28,13 @@ public class Employee {
 	}
 
 	public String geteName() {
-		return eName;
+		return empName;
 	}
 
 	public void seteName(String eName) {
-		this.eName = eName;
+		this.empName = eName;
 	}
 
-	public int getWage() {
-		return wage;
-	}
-
-	public void setWage(int wage) {
-		this.wage = wage;
-	}
 
 	public int getDays() {
 		return days;

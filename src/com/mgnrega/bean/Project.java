@@ -4,6 +4,7 @@ public class Project {
 	private int projectId;
 	private String projectName;
 	private int budget;
+	private int dailyWages;
 	
 	public Project() {
 		
@@ -11,10 +12,23 @@ public class Project {
 
 	
 	
-	public Project(String projectName, int budget) {
+	public Project(String projectName, int budget,int dailyWages) {
 		super();
 		this.projectName = projectName;
 		this.budget = budget;
+		this.dailyWages = dailyWages;
+	}
+
+
+
+	public int getDailyWages() {
+		return dailyWages;
+	}
+
+
+
+	public void setDailyWages(int dailyWages) {
+		this.dailyWages = dailyWages;
 	}
 
 
@@ -43,10 +57,15 @@ public class Project {
 		this.budget = budget;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", budget=" + budget + "]";
+		return "Project [projectId=" + projectId + ", projectName=" + projectName + ", budget=" + budget
+				+ ", dailyWages=" + dailyWages + "]";
 	}
+
+	
 	
 	
 	
