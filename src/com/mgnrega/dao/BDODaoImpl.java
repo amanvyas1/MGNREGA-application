@@ -144,14 +144,109 @@ public class BDODaoImpl implements BDODao{
 
 	@Override
 	public List<Project> unassignedProject() throws ProjectException {
-		// TODO Auto-generated method stub
-		return null;
+		
+        List<Project> projectList = new ArrayList<>();
+		
+		try(Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("select * from projects p left join gpm g on p.pid=g.pid where g.pid is null");
+			ResultSet rs= ps.executeQuery();	
+			while(rs.next()) {
+				int projectId = rs.getInt("pid");
+				String projectName = rs.getString("pname");
+				int budget = rs.getInt("budget");
+				int dailyWage = rs.getInt("dwage");
+				
+				Project p = new Project(projectName,budget,dailyWage);
+				p.setProjectId(projectId);
+				projectList.add(p);
+			}
+		}catch(SQLException sqe) {
+			throw new ProjectException(sqe.getMessage());
+		}
+		
+		if(projectList.size()==0) {
+			throw new ProjectException("No project is left unassigned");
+		}
+		return projectList;
+	}
+	
+	@Override
+	public List<GPM> unassignedGPM() throws GPMException {
+		List<GPM> l = new ArrayList<>();
+		try(Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("select * from gpm where pid is null");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int gpmId = rs.getInt("gpmid");
+				String gpmName = rs.getString("gpmname");
+				String phone = rs.getString("phone");
+				String password = rs.getString("password");
+				GPM gpm = new GPM(gpmName,phone,password);
+				gpm.setGpmId(gpmId);
+				l.add(gpm);
+			}
+		} catch (SQLException e) {
+			throw new GPMException(e.getMessage());
+		}
+		if(l.size()==0) {
+			throw new GPMException("No Gram panchayat member is left unassigned");
+		}
+		return l;
 	}
 
 	@Override
 	public List<ProjectEmpDTO> projectEmpDetails() throws ProjectException {
-		// TODO Auto-generated method stub
-		return null;
+		List<ProjectEmpDTO> pEmpList = new ArrayList<>();
+		try(Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("select p.pid,p.pname,e.eid,e.ename,e.days,e.days*p.dwage twage from employee e inner join projects p on e.pid=p.pid");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int projectId = rs.getInt("pid");
+				String projectName = rs.getString("pname");
+				int empId = rs.getInt("eid");
+				String empName = rs.getString("ename");
+				int days = rs.getInt("days");
+				int wage = rs.getInt("twage");
+				ProjectEmpDTO ped = new ProjectEmpDTO(projectId,projectName,empId,empName,wage,days);
+				pEmpList.add(ped);
+			}
+		}catch(SQLException e) {
+			throw new ProjectException("Technical Error");
+		}
+		if(pEmpList.size()==0) {
+			throw new ProjectException("No employee is working on projects");
+		}
+		return pEmpList;
 	}
+
+	@Override
+	public List<ProjectEmpDTO> projectEmpDetailsByPID(int pid) throws ProjectException {
+		List<ProjectEmpDTO> pEmpList = new ArrayList<>();
+		try(Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("select p.pid,p.pname,e.eid,e.ename,e.days,e.days*p.dwage twage from employee e inner join projects p on e.pid=p.pid where p.pid=?");
+			ps.setInt(1, pid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int projectId = rs.getInt("pid");
+				String projectName = rs.getString("pname");
+				int empId = rs.getInt("eid");
+				String empName = rs.getString("ename");
+				int days = rs.getInt("days");
+				int wage = rs.getInt("twage");
+				ProjectEmpDTO ped = new ProjectEmpDTO(projectId,projectName,empId,empName,wage,days);
+				pEmpList.add(ped);
+			}
+		}catch(SQLException e) {
+			throw new ProjectException("Technical Error");
+		}
+		if(pEmpList.size()==0) {
+			throw new ProjectException("No employee is working on projects");
+		}
+		return pEmpList;
+	}
+	
+	
+
+	
 
 }
