@@ -72,8 +72,8 @@ public class ProjectEmpDTO {
 
 	@Override
 	public String toString() {
-		return "ProjectEmpDTO [projectId=" + projectId + ", projectName=" + projectName + ", empId=" + empId
-				+ ", empName=" + empName + ", wages=" + wages + ", days=" + days + "]";
+		return "[projectId=" + projectId + " | projectName=" + projectName + " | empId=" + empId
+				+ " | empName=" + empName + " | wages=" + wages + " | days=" + days + "]";
 	}
 
 	

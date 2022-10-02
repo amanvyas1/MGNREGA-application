@@ -19,9 +19,9 @@ public interface GPMDao {
 	
 	public List<Employee> unassignedEmp() throws EmployeeException;
 	
-	public String assignEmp(int empId, int projectId) throws ProjectException,EmployeeException;
+	public String assignEmp(int empId, int projectId,int days) throws ProjectException,EmployeeException;
 	
-	public List<ProjectEmpDTO> projectEmpDetails()throws ProjectException,EmployeeException;
+	public List<ProjectEmpDTO> projectEmpDetails(int gpmid)throws ProjectException,EmployeeException;
 	
 	
 	

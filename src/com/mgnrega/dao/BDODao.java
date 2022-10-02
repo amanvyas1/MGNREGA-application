@@ -10,6 +10,9 @@ import com.mgnrega.exceptions.ProjectException;
 
 public interface BDODao {
 	
+	
+	public boolean loginAsBDO(int id,String password) throws ProjectException;
+	
 	public String createProject(String name,int budget,int dailyWages);
 	
 	public List<Project> viewAllProjects() throws ProjectException;
@@ -18,13 +21,15 @@ public interface BDODao {
 	
 	public List<GPM> viewAllGPM() throws GPMException;
 	
+	public List<GPM> unassignedGPM() throws GPMException;
+	
 	public String allocateProjectGpm(int gpmId,int projectId) throws ProjectException, GPMException;
 	
 	public List<Project> unassignedProject() throws ProjectException;
 	
 	public List<ProjectEmpDTO> projectEmpDetails()throws ProjectException;
 	
-	
+	public List<ProjectEmpDTO> projectEmpDetailsByPID(int pid)throws ProjectException;
 	
 	
 }
