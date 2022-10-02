@@ -11,7 +11,7 @@ import com.mgnrega.exceptions.ProjectException;
 
 public class ProjectEmpByPidBDOUseCase {
 
-	public static void main(String[] args) {
+	public static void projectbyId() {
 		Scanner sc= new Scanner(System.in);
 		
 		try {
@@ -20,12 +20,16 @@ public class ProjectEmpByPidBDOUseCase {
 			BDODao bdo = new BDODaoImpl();
 			try {
 				List<ProjectEmpDTO> ped = bdo.projectEmpDetailsByPID(pid);
-				ped.forEach(p->System.out.println(p));
+				ped.forEach(p->{
+					System.out.println(p);
+					System.out.println("--------------------------------------------------------------------------------------------");
+				});
 			} catch (ProjectException e) {
 				System.out.println(e.getMessage());
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Please enter only in number");
+			projectbyId();
 		}
 
 	}

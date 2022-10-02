@@ -10,7 +10,7 @@ import com.mgnrega.exceptions.ProjectException;
 
 public class AssignProjectToEmployeeUseCase {
 
-	public static void main(String[] args) {
+	public static void assignProject() {
 		GPMDao gpm = new GPMDaoImpl();
 		Scanner sc = new Scanner(System.in);
 		try {
@@ -25,10 +25,11 @@ public class AssignProjectToEmployeeUseCase {
 				System.out.println(message);
 			} catch (ProjectException | EmployeeException e) {
 				System.out.println(e.getMessage());
+				assignProject();
 			}
 		} catch (InputMismatchException ime) {
 			System.out.println("Please Enter valid inputs");
-			AssignProjectToEmployeeUseCase.main(args);
+			assignProject();
 		}
 				
 

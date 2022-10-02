@@ -8,15 +8,16 @@ import com.mgnrega.dao.BDODaoImpl;
 import com.mgnrega.exceptions.GPMException;
 
 public class ViewAllGPMUseCase {
-	public static void main(String[] args) {
+	public static void viewGPMs() {
 		BDODao bdo = new BDODaoImpl();
 		try {
 			List<GPM> l = bdo.viewAllGPM();
 			l.forEach(gpm->{
-				System.out.println("Member Id=" + gpm.getGpmId() + " Member Name=" + gpm.getGpmName() + " phone number=" + gpm.getPhone() + " password=" + gpm.getPassword());
+				System.out.println("Member Id=" + gpm.getGpmId() + " | Member Name=" + gpm.getGpmName() + " | phone number=" + gpm.getPhone() + " | password=" + gpm.getPassword());
+				System.out.println("------------------------------------------------------------------------");
 			});
 		} catch (GPMException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

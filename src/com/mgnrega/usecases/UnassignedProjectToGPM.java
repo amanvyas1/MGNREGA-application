@@ -11,7 +11,7 @@ import com.mgnrega.exceptions.ProjectException;
 
 public class UnassignedProjectToGPM {
 
-	public static void main(String[] args) {
+	public static void unassignProject() {
 		BDODao bdo = new BDODaoImpl();
 		try {
 			System.out.println("Unassigned Projects");

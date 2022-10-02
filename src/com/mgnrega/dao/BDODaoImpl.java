@@ -16,6 +16,26 @@ import com.mgnrega.utility.DBUtil;
 
 public class BDODaoImpl implements BDODao{
 
+	
+	
+	@Override
+	public boolean loginAsBDO(int id, String password) throws ProjectException {
+		try(Connection conn = DBUtil.provideConnection()){
+			PreparedStatement ps = conn.prepareStatement("select * from bdo where id=? and pass=?");
+			ps.setInt(1, id);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch(SQLException sqe) {
+			throw new ProjectException(sqe.getMessage());
+		}
+	}
+	
+	
 	@Override
 	public String createProject(String name, int budget, int dailyWages) {
 		String message = "Project could not be created";
@@ -244,6 +264,7 @@ public class BDODaoImpl implements BDODao{
 		}
 		return pEmpList;
 	}
+
 	
 	
 

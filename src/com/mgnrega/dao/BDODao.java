@@ -10,6 +10,9 @@ import com.mgnrega.exceptions.ProjectException;
 
 public interface BDODao {
 	
+	
+	public boolean loginAsBDO(int id,String password) throws ProjectException;
+	
 	public String createProject(String name,int budget,int dailyWages);
 	
 	public List<Project> viewAllProjects() throws ProjectException;

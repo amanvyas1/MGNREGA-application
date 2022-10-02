@@ -1,5 +1,6 @@
 package com.mgnrega.usecases;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.mgnrega.bean.GPM;
@@ -8,16 +9,26 @@ import com.mgnrega.dao.GPMDaoImpl;
 import com.mgnrega.exceptions.GPMException;
 
 public class LoginAsGPMUseCase {
-	public static void main(String[] args) {
+	public static void loginAsGPM() {
 		GPMDao gmp = new GPMDaoImpl();
 		Scanner sc = new Scanner(System.in);
 		try {
-			System.out.println("Enter ID");
-			GPM member = gmp.loginAsGPM(4, "12229");
-			System.out.println(member.getGpmId() + " " + member.getGpmName());
-		} catch (GPMException e) {
-			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			try {
+				System.out.println("Enter your Id");
+				int id = sc.nextInt();
+				System.out.println("Enter your password");
+				sc.nextLine();
+				String pass = sc.nextLine();
+				GPM member = gmp.loginAsGPM(id, pass);
+				System.out.println("Welcome " + member.getGpmName());
+			} catch (GPMException e) {
+				System.out.println(e.getMessage());
+				System.out.println("please try again");
+				loginAsGPM();
+			}
+		}catch(InputMismatchException ime) {
+			System.out.println("Please enter valid ID");
+			loginAsGPM();
 		}
 		
 	}

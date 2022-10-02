@@ -12,24 +12,27 @@ import com.mgnrega.exceptions.ProjectException;
 
 public class ProjecetEmpGPMUseCase {
 
-	public static void main(String[] args) {
+	public static void projectEmp() {
         Scanner sc= new Scanner(System.in);
 		
 		try {
 			System.out.println("Enter gram panchyat member Id to get Employee List with project");
 			int gpmid = sc.nextInt();
-			GPMDao bdo = new GPMDaoImpl();
+			GPMDao gpm = new GPMDaoImpl();
 			
 			try {
-				List<ProjectEmpDTO> ped = bdo.projectEmpDetails(gpmid);
-				ped.forEach(p->System.out.println(p));
+				List<ProjectEmpDTO> ped = gpm.projectEmpDetails(gpmid);
+				ped.forEach(p->{
+					System.out.println(p);
+					System.out.println("--------------------------------------------------------------------------------------------");
+				});
 			} catch (ProjectException | EmployeeException e) {
-				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
 			
 		} catch (InputMismatchException e) {
 			System.out.println("Please enter only in number");
+			projectEmp();
 		}
 
 	}

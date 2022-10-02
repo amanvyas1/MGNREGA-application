@@ -9,14 +9,16 @@ import com.mgnrega.exceptions.EmployeeException;
 
 public class ViewEmpListUseCase {
 
-	public static void main(String[] args) {
+	public static void viewEmp() {
 		GPMDao gpm = new GPMDaoImpl();
 		try {
 			List<Employee> list = gpm.viewEmpList();
-			list.forEach(i->System.out.println(i));
+			list.forEach(i->{
+				System.out.println(i);
+				System.out.println("----------------------------------------------------------------");
+			});
 		} catch (EmployeeException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		
 

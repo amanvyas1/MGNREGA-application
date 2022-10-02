@@ -10,12 +10,16 @@ import com.mgnrega.exceptions.EmployeeException;
 
 public class UnassignedEmployee {
 
-	public static void main(String[] args) {
+	public static void unassginedEmp() {
 		GPMDao gpm = new GPMDaoImpl();
 		
 			try {
 				List<Employee> list = gpm.unassignedEmp();
-				list.forEach(e->System.out.println(e));
+				System.out.println("Here is the list of unassigned employees");
+				list.forEach(i->{
+					System.out.println(i);
+					System.out.println("----------------------------------------------------------------");
+				});
 			} catch (EmployeeException e) {
 				System.out.println(e.getMessage());
 			}

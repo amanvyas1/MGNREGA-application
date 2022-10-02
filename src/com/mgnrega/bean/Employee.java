@@ -16,7 +16,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", eName=" + empName + ", days=" + days + "]";
+		return "Employee [empId=" + empId + " | eName=" + empName + " | days=" + days + "]";
 	}
 
 	public int getEmpId() {

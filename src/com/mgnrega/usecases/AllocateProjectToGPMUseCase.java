@@ -8,7 +8,7 @@ import com.mgnrega.exceptions.GPMException;
 import com.mgnrega.exceptions.ProjectException;
 
 public class AllocateProjectToGPMUseCase {
-	public static void main(String[] args) {
+	public static void allocateGPM() {
 		Scanner sc = new Scanner(System.in);
 		BDODao bdo = new BDODaoImpl();
 		System.out.println("Enter Project Id");
@@ -19,7 +19,7 @@ public class AllocateProjectToGPMUseCase {
 			String msg = bdo.allocateProjectGpm(gid,pid);
 			System.out.println(msg);
 		} catch (ProjectException | GPMException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
