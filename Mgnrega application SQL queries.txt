@@ -1,0 +1,80 @@
+project table
+
+create table projects(
+     pid int primary key auto_increment,
+     pname varchar(20) not null,
+     budget int not null,
+     dwage int not null
+);
+
+gpm table creation 
+
+create table gpm(
+gpmid int primary key auto_increment,
+gpmname varchar(25) not null,
+phone varchar(10) not null,
+password varchar(10) not null,
+pid int unique,
+foreign key (pid) references projects(pid)
+);
+
+
+employee table creation
+
+create table employee(
+eid int primary key auto_increment,
+ename varchar(25) not null,
+days int,
+pid int,
+foreign key (pid) references projects(pid)
+);
+
+Queries for BDO DAO
+
+--creating project
+
+insert into projects(pname,budget,dwage) values(?,?,?);
+
+--show project list
+
+select * from projects
+
+--creating gpm
+insert into gpm(gpmname,phone,password) values(?,?,?);
+
+--view all gram panchayat member
+select * from gpm;
+
+--allocate project to gpm
+update gpm set pid=? where gpmid=?;
+
+--unassigned projects to gpm
+select * from projects p left join gpm g on p.pid=g.pid where g.pid is null;
+
+--See List of Employee working on that Project and their wages.
+
+select p.pid,p.pname,e.eid,e.ename,e.days,e.days*p.dwage twage from employee e inner join projects p on e.pid=p.pid;
+
+--see list of employee by project Id;
+select p.pid,p.pname,e.eid,e.ename,e.days,e.days*p.dwage twage from employee e right join projects p on e.pid=p.pid where p.pid=?;
+
+Queries for GPMDAO
+
+--Login as GPM
+select * from gpm where gpmid = ? and password = ?;
+
+--create employee
+insert into employee(ename) values(?);
+
+--View the Details of Employee.
+select * from employee;
+
+--Assign employee to a project
+update employee set pid=?,days=? where eid=?;
+
+--unassigned employee
+select * from employee where pid is null;
+
+--project employee list by gpm for only one particular project he is working on
+
+select p.pid,p.pname,e.eid,e.ename,e.days,e.days*p.dwage twage,g.gpmname from employee e inner join projects p inner join gpm g on e.pid=p.pid and g.pid=p.pid where g.gpmid=?;
