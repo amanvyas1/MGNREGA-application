@@ -4,8 +4,7 @@
 MNREGA(The Mahatma Gandhi National Rural Employment Guarantee Act ) is a scheme by which unskilled people of rural India are guaranteed to have 100 days of paid work. Main objective of this project is to manage employments offered through this scheme. It is a console based application.
 
 ## Demo video link
-- [Demo video](https://drive.google.com/file/d/1d1fCqDTFJpNQpkQAETLizmA8ojfxqKUb/view)
-
+- <a target="_blank" href="https://drive.google.com/file/d/1d1fCqDTFJpNQpkQAETLizmA8ojfxqKUb/view">Demo video</a>
 ## Features
 
 **There are two users of this application BDO and Gram Panchayat Member.**
