@@ -1,5 +1,14 @@
 package com.mgnrega.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@Data
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class GPM {
 	private int gpmId;
 	private String gpmName;
@@ -13,51 +22,5 @@ public class GPM {
 		this.phone = phone;
 		this.password = password;
 	}
-	
-	public GPM() {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "GPM [gpmId=" + gpmId + ", gpmName=" + gpmName + ", phone=" + phone + ", password=" + password + "]";
-	}
-
-	public int getGpmId() {
-		return gpmId;
-	}
-
-	public void setGpmId(int gpmId) {
-		this.gpmId = gpmId;
-	}
-
-	public String getGpmName() {
-		return gpmName;
-	}
-
-	public void setGpmName(String gpmName) {
-		this.gpmName = gpmName;
-	}
-
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
-
-	
-	
 	
 }

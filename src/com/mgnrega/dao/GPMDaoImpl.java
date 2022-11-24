@@ -69,7 +69,7 @@ public class GPMDaoImpl implements GPMDao{
 				int daysWorked = rs.getInt("days");
 				Employee e = new Employee();
 				e.setEmpId(empId);
-				e.seteName(eName);
+				e.setEmpName(eName);
 				e.setDays(daysWorked);
 				list.add(e);
 			}
@@ -94,7 +94,7 @@ public class GPMDaoImpl implements GPMDao{
 				int daysWorked = rs.getInt("days");
 				Employee e = new Employee();
 				e.setEmpId(empId);
-				e.seteName(eName);
+				e.setEmpName(eName);
 				e.setDays(daysWorked);
 				list.add(e);
 			}
